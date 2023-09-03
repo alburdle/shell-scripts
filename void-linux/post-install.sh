@@ -21,7 +21,11 @@ enableSv chronyd
 enableSv metalog
 disableSv wpa_supplicant
 disableSv dhcpcd
+enableSv dbus
 enableSv NetworkManager
+echo "NetworkManager is now enabled. Please reconfigure networking if needed."
+echo "When done, exit the shell to continue."
+sh
 
 # -- Install other low-level packages.
 xbps-install -Suy gvfs
@@ -34,7 +38,7 @@ xbps-install -Suy 7z xz zip unzip
 # Downloading utilities.
 xbps-install -Suy curl wget
 # High-level, possibly useful utilities.
-xbps-install -Suy bvi vim tmux git gnupg
+xbps-install -Suy bvi vim tmux git gnupg htop
 # Compilers.
 xbps-install -Suy clang clang-tools-extra
 
@@ -43,5 +47,6 @@ xbps-install -Suy clang clang-tools-extra
 xbps-install -Suy xorg-minimal noto-fonts-ttf noto-fonts-cjk noto-fonts-emoji xorg-input-drivers xorg-video-drivers
 # Desktop environment.
 xbps-install -Suy xfce4 breeze-gtk papirus-icon-theme
+enableSv elogind
 # Some desktop applications.
 xbps-install -Suy firefox vscode
